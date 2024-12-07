@@ -9,4 +9,11 @@ function createGrid () {
 };
 createGrid();
 
+function toColorBox (event) {
+    event.target.style.backgroundColor = "black";
+};
 
+const allGridBox = document.querySelectorAll(".gridBox");
+for (let i = 0; i < allGridBox.length; i++) {
+    allGridBox[i].addEventListener("mouseenter", toColorBox);
+};
