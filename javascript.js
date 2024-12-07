@@ -4,17 +4,17 @@ const gridButton = document.querySelector("#gridButton");
 function createGrid (gridNumber) {
 
     gridContainer.innerHTML = "";
+    const gridBoxSize = 320 / gridNumber;
 
     for (let i = 0; i < (gridNumber * gridNumber); i++) {
         const gridBox = document.createElement("div");
         gridBox.className = "gridBox";
+        gridBox.style.width = `${gridBoxSize}px`;
+        gridBox.style.height = `${gridBoxSize}px`;
         gridContainer.appendChild(gridBox);
+        gridBox.addEventListener("mouseenter", toColorBox);
     };
 
-    const allGridBox = document.querySelectorAll(".gridBox");
-    for (let i = 0; i < allGridBox.length; i++) {
-    allGridBox[i].addEventListener("mouseenter", toColorBox);
-};
 };
 
 function toColorBox (event) {
