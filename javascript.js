@@ -14,7 +14,6 @@ function createGrid (gridNumber) {
         gridContainer.appendChild(gridBox);
         gridBox.addEventListener("mouseenter", toColorBox);
     };
-
 };
 
 function toColorBox (event) {
@@ -22,10 +21,10 @@ function toColorBox (event) {
 };
 
 gridButton.addEventListener("click", () => {
-    let gridNumber = prompt("Please enter the number of grid boxes per side (between 0 and 101)", 10);
+    let gridNumber = prompt("Please enter the number of grid boxes per side (between 1 and 100)", 10);
     if (!isNaN(gridNumber) && gridNumber > 0 && gridNumber <= 100) {
         createGrid(gridNumber);
-    } else {alert("Please enter a valid number between 0 and 101")}
+    } else {alert("Please enter a valid number between 1 and 100")};
 });
 
 createGrid(16);
