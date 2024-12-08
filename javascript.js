@@ -9,7 +9,7 @@ function getRandomColor() {
     const g = Math.floor(Math.random() * 256);
     const b = Math.floor(Math.random() * 256);
     return `rgb(${r}, ${g}, ${b})`;
-}
+};
 
 // Function to darken the color progressively
 function darkenColor(rgb, darkenFactor) {
@@ -18,7 +18,7 @@ function darkenColor(rgb, darkenFactor) {
     const g = Math.max(0, Math.floor(match[1] * darkenFactor));
     const b = Math.max(0, Math.floor(match[2] * darkenFactor));
     return `rgb(${r}, ${g}, ${b})`;
-}
+};
 
 // Function to handle color change
 function toColorBox(event) {
@@ -34,8 +34,8 @@ function toColorBox(event) {
         const darkenFactor = parseFloat(gridBox.dataset.darkenFactor);
         gridBox.style.backgroundColor = darkenColor(currentColor, darkenFactor);
         gridBox.dataset.darkenFactor -= 0.1; // Reduce the darkening factor by 10%
-    }
-}
+    };
+};
 
 // Function to create the grid
 function createGrid (gridNumber) {
