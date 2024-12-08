@@ -3,17 +3,41 @@ const gridButton = document.querySelector("#gridButton");
 
 let isDragging = false; // Flag to track whether the mouse is being dragged
 
-// Function that generates rgb value 
-function toColorBox (event) {
-    function getRandomColor() {
-        const r = Math.floor(Math.random() * 256);
-        const g = Math.floor(Math.random() * 256);
-        const b = Math.floor(Math.random() * 256);
-        return `rgb(${r}, ${g}, ${b})`;
-    };
-    event.target.style.backgroundColor = getRandomColor();
-};
+// Function to generate a random RGB color
+function getRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+}
 
+// Function to darken the color progressively
+function darkenColor(rgb, darkenFactor) {
+    const match = rgb.match(/\d+/g);
+    const r = Math.max(0, Math.floor(match[0] * darkenFactor));
+    const g = Math.max(0, Math.floor(match[1] * darkenFactor));
+    const b = Math.max(0, Math.floor(match[2] * darkenFactor));
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
+// Function to handle color change
+function toColorBox(event) {
+    const gridBox = event.target;
+
+    if (!gridBox.style.backgroundColor) {
+        // Assign random color and set initial opacity
+        gridBox.style.backgroundColor = getRandomColor();
+        gridBox.dataset.darkenFactor = 0.9; // Start with a 10% darkening step
+    } else {
+        // Darken the existing color
+        const currentColor = gridBox.style.backgroundColor;
+        const darkenFactor = parseFloat(gridBox.dataset.darkenFactor);
+        gridBox.style.backgroundColor = darkenColor(currentColor, darkenFactor);
+        gridBox.dataset.darkenFactor -= 0.1; // Reduce the darkening factor by 10%
+    }
+}
+
+// Function to create the grid
 function createGrid (gridNumber) {
     
     gridContainer.innerHTML = ""; // Clear existing grid
