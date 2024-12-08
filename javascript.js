@@ -27,7 +27,7 @@ function toColorBox(event) {
     if (!gridBox.style.backgroundColor) {
         // Assign random color and set initial opacity
         gridBox.style.backgroundColor = getRandomColor();
-        gridBox.dataset.darkenFactor = 0.9; // Start with a 10% darkening step
+        
     } else {
         // Darken the existing color
         const currentColor = gridBox.style.backgroundColor;
