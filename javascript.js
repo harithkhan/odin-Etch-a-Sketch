@@ -17,7 +17,13 @@ function createGrid (gridNumber) {
 };
 
 function toColorBox (event) {
-    event.target.style.backgroundColor = "black";
+    function getRandomColor() {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        return `rgb(${r}, ${g}, ${b})`;
+    };
+    event.target.style.backgroundColor = getRandomColor();
 };
 
 gridButton.addEventListener("click", () => {
