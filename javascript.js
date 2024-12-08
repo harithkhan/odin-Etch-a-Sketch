@@ -1,6 +1,8 @@
 const gridContainer = document.querySelector("#gridContainer");
 const gridButton = document.querySelector("#gridButton");
 
+let isDragging = false;
+
 function createGrid (gridNumber) {
 
     gridContainer.innerHTML = "";
@@ -12,8 +14,13 @@ function createGrid (gridNumber) {
         gridBox.style.width = `${gridBoxSize}px`;
         gridBox.style.height = `${gridBoxSize}px`;
         gridContainer.appendChild(gridBox);
-        gridBox.addEventListener("mouseenter", toColorBox);
+        gridBox.addEventListener("mousedown", toColorBox);
+        gridBox.addEventListener("mouseenter", (event) => {
+            if (isDragging) toColorBox(event); // Change on drag
+        });
     };
+    document.addEventListener("mousedown", () => isDragging = true);
+    document.addEventListener("mouseup", () => isDragging = false);
 };
 
 function toColorBox (event) {
