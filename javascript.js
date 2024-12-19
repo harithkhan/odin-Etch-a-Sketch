@@ -58,7 +58,10 @@ function createGrid (gridNumber) {
     };
 
     // Add mouse event listeners to manage dragging state
-    document.addEventListener("mousedown", () => isDragging = true);
+    document.addEventListener("mousedown", (event) => {
+        event.preventDefault();
+        isDragging = true
+    });
     document.addEventListener("mouseup", () => isDragging = false);
 };
 
